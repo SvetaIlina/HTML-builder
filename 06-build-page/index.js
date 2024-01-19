@@ -48,7 +48,10 @@ async function replaceTemplate() {
       path.join(compFolder, components[i]),
       'utf-8',
     );
-    const compName = components[i].split('.')[0];
+    const compName = path.basename(
+      path.join(compFolder, components[i]),
+      path.extname(components[i]),
+    );
     html = html.replace(`{{${compName}}}`, compContent);
   }
   return html;

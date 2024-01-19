@@ -11,9 +11,10 @@ fs.readdir(
       fs.stat(path.join(item.path, item.name), (err, stats) => {
         if (err) return console.log(err.message);
         console.log(
-          `${item.name.split('.')[0]} - ${path.extname(item.name).slice(1)} - ${
-            stats.size
-          }b`,
+          `${path.basename(
+            path.join(item.path, item.name),
+            path.extname(item.name),
+          )} - ${path.extname(item.name).slice(1)} - ${stats.size}b`,
         );
       });
     });
